@@ -1,5 +1,6 @@
 import React from "react"; //legacy way instead of using the syntactic sugar of JSX (this import was present in all the js files)
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
   const expenses = [
@@ -24,19 +25,19 @@ const App = () => {
     },
   ];
 
-  // return (
-  //   <div>
-  //     <h2 class="heading--2">Let's get started!</h2>
-  //     <Expenses items={expenses} />
-  //   </div>
-  // );
+  return (
+    <div>
+      <NewExpense />
+      <Expenses items={expenses} />
+    </div>
+  );
 
-  return React.createElement(
-    "div",
-    {},
-    React.createElement("h2", {}, "Let's get started!"),
-    React.createElement(Expenses, { items: expenses })
-  ); //alternative to JSX for which the React import was needed
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // ); //alternative to JSX for which the React import was needed
 };
 
 export default App;
