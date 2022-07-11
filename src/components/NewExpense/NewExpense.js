@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
@@ -12,9 +12,22 @@ const NewExpense = props => {
     props.onAddExpense(expenseData);
   };
 
+  const [formState, setFormState] = useState('closed');
+  const clearFormHandler = () => {
+    setFormState('closed');
+  };
+  const openFormHandler = () => {
+    setFormState('open');
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm
+        visibility={formState}
+        onOpenForm={openFormHandler}
+        onCancelForm={clearFormHandler}
+        onSaveExpenseData={saveExpenseDataHandler}
+      />
     </div>
   );
 };
